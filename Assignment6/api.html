@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel API Character Search</title>
+    
+</head>
+<body>
+    <h1 id="message">Waiting for search... </h1>
+    <h1>Marvel Character Search</h1>
+    <input type="text" id="characterName" placeholder="Enter character name">
+    <button onclick="searchCharacter()">Search</button>
+    <div id="results"></div>
+
+    <script>
+        const publicKey = '7c15687c69114f9b8fe0c7387805c3d5';
+        const privateKey = '86653b77b45bbc3c1e7e87d7956eabe46a46206e';
+
+        function searchCharacter() {
+            const characterName = document.getElementById('characterName').value;
+            const ts = new Date().getTime();
+            const hash = CryptoJS.MD5(ts + privateKey + publicKey).toString();
+
+            const url = `https://gateway.marvel.com/v1/public/characters?name=${characterName}&ts=${ts}&apikey=${publicKey}&hash=${hash}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const results = document.getElementById('results');
+                    results.innerHTML = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

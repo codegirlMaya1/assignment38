@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .timer {
+            font-size: 2em;
+            margin: 20px;
+        }
+        .notification {
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+        }
+        h1{
+            font-family: 'Times New Roman', Times, serif;
+            color: black;
+            text-shadow: darkred;
+        }
+    
+    </style>
+</head>
+<body>
+    <header>
+        <div class="clock">
+            <div class="hand hour" id="hour"></div>
+            <div class="hand minute" id="minute"></div>
+            <div class="hand second" id="second"></div>
+        </div>
+        <script src="script.js"></script>
+    </header>
+    <div>
+        <h1>Set Task Clock <small style="color: blue;"><em>with constant reminder:</em></small></h1>
+        <label for="timeInput">Enter time in seconds:</label>
+        <input type="number" id="timeInput" min="1">
+        <button onclick="startTimer()">Start Timer</button>
+    </div>
+    <div class="timer" id="timerDisplay">00:00</div>
+    <div class="notification" id="notification">
+        <span>20 seconds have passed!</span>
+        <button onclick="dismissNotification()">Dismiss</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
